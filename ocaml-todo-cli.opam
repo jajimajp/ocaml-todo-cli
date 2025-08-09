@@ -1,0 +1,27 @@
+opam-version: "2.0"
+name: "ocaml-todo-cli"
+version: "0.1.0"
+synopsis: "Simple Todo App CLI"
+homepage: "https://github.com/jajimajp/ocaml-todo-cli"
+bug-reports: "https://github.com/jajimajp/ocaml-todo-cli/issues"
+authors: ["Yajima Soichi"]
+maintainer: "jajima.jp@gmail.com"
+license: "MIT"
+depends: [
+  "ocaml" {>= "4.12"}
+  "ocamlfind"
+  "sqlite3"
+]
+
+build: [
+  [make "release" "OPAM=" "PREFIX=%{prefix}%"]
+]
+
+install: [
+  [make "install" "OPAM=" "PREFIX=%{prefix}%" ]
+]
+
+remove: [
+  [make "uninstall" "OPAM=" "PREFIX=%{prefix}%" ]
+  ["rm" "-r" "%{prefix}%/share/ocaml-todo-cli/" ]
+]
